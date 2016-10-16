@@ -1,0 +1,56 @@
+body {
+  font-family: 'Roboto', Arial;
+  font-size: 1.3em;
+}
+
+
+#popin {
+  background-color: #fff;
+  width:40%;
+  height:auto;
+  position:fixed;
+  top:10%;
+  left:30%;
+  padding:20px;
+  border-radius: 15px;
+  border:1px grey solid;
+
+}
+#popin img {
+  width:100%;
+}
+#tasks {
+  font-weight: 200;
+  font-size: 1.7em;
+}
+
+hr {
+  margin-top: 55px;
+  margin-bottom: 50px;
+}
+.taskcontainer {
+  padding:15px 0;
+}
+h1 {
+  font-weight: 600;
+}
+
+h2 {
+  font-weight: 400;
+}
+
+.checkputs {
+display:none;}
+
+#tasks button{
+  width:35px;
+  height:35px;
+  color:green;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.done {
+  color:grey;
+  text-decoration: line-through;
+}

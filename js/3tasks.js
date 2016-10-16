@@ -1,32 +1,34 @@
 
-var tasksarray = ['task 1','task 2','task 3','task 4','task 5']
+var tasksarray = ['','','','','']
 var nextTask = 0;
 
 
 
-function setCookie(cname, cvalue, exdays) {
-    var d = new Date();
-    d.setTime(d.getTime() + (exdays*24*60*60*1000));
-    var expires = "expires="+ d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
 
+function getTaskListFromInput(){
 
-function updateTaskList(){
+  var lines = document.getElementById("editabletext").value.replace(/\r\n/g, "\n").split("\n");
+
   for (var i = 1; i < 11; i++) {
-    var valuefrominputtext = document.getElementById("listitem" + i).value
-    tasksarray[i-1] = valuefrominputtext;
+    var valuefrominputtext = lines[i-1];
+    console.log(valuefrominputtext);
+    if (valuefrominputtext == null ) {
+      valuefrominputtext = '(no task left!)';
+    }
+      tasksarray[i-1] = valuefrominputtext;
+
   }
-  console.log("whatssupman");
-  initialize();
+
+  updateTaskText();
 
 }
 
 
-function initialize() {
+function updateTaskText() {
   nextTask = 0;
   //load first 3 tasks from the list
   for (var i = 1; i < 4; i++) {
+
   textReplace(i,i-1);
 
   }

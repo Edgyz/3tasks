@@ -3,7 +3,9 @@ body {
   font-size: 1.3em;
 }
 
-
+textarea {
+  font-size: 20px;
+}
 #popin {
   background-color: #fff;
   width:40%;
@@ -14,6 +16,7 @@ body {
   padding:20px;
   border-radius: 15px;
   border:1px grey solid;
+  display:none;
 
 }
 #popin img {

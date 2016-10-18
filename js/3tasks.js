@@ -1,6 +1,10 @@
 
 var tasksarray = ['','','','','']
 var nextTask = 0;
+var editable = false;
+//is the backlog editable
+var backlogDiv = 'tests';
+//name of the backlog div for later functions
 
 //Should I turn the tasks into objects? What would the parameters be?
 var car = {type:"Fiat", model:"500", color:"white"};
@@ -96,3 +100,23 @@ function buttonTrigger(x){
     checkboxTrigger(x);
 
   }
+
+
+function makeEditable() {
+  if ( editable == false ) {
+    document.getElementById("editbtn").innerHTML="I'm done editing!";
+    document.getElementById(backlogDiv).setAttribute("contenteditable", "true");
+    editable = true;
+  } else {
+document.getElementById(backlogDiv).setAttribute("contenteditable", "false");
+  document.getElementById("editbtn").innerHTML="Edit Backlog";
+editable = false;
+  }
+
+}
+
+function blockingTab() {
+  if ( editable == true ) {
+    document.getElementById(backlogDiv).focus();
+  }
+}

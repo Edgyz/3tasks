@@ -12,86 +12,84 @@
 </head>
 <body onload="getTaskListFromInput()">
 
-  <h1 id="title">3 tasks!</h1>
+  <div id="all">
 
+    <h1 id="title">it's only 3 tasks!</h1>
 
-<div id="tasks">
+    <div id="tasks">
+      <div class="taskcontainer">
 
-    <div class="taskcontainer">
+          <input type="checkbox" class="checkputs" id="taskinp1" onchange="checkboxTrigger(1)">
+          <button class="taskbutton" id="button1" onclick="buttonTrigger(1)">
+          </button>
+          <label id="labelinp1" for="taskinp1">
+            Task I have to do number 1
+          </label>
 
-      <input type="checkbox" class="checkputs" id="taskinp1" onchange="checkboxTrigger(1)">
+      </div>
+      <div class="taskcontainer">
 
-              <button id="button1" onclick="buttonTrigger(1)">  </button>
-            <label id="labelinp1" for="taskinp1">
-                Task I have to do number 1
-            </label>
+          <input type="checkbox" class="checkputs" id="taskinp2" onchange="checkboxTrigger(2)">
+          <button class="taskbutton" id="button2" onclick="buttonTrigger(2)">
+          </button>
+          <label id="labelinp2" for="taskinp2">
+            Task I have to do number 2
+          </label>
 
+      </div>
+      <div class="taskcontainer">
+
+          <input type="checkbox" class="checkputs" id="taskinp3" onchange="checkboxTrigger(3)">
+          <button class="taskbutton" id="button3" onclick="buttonTrigger(3)">
+          </button>
+          <label id="labelinp3" for="taskinp3">
+            Task I have to do number 3
+          </label>
+      </div>
     </div>
-    <div class="taskcontainer">
 
-      <input type="checkbox" class="checkputs" id="taskinp2" onchange="checkboxTrigger(2)">
 
-                <button id="button2" onclick="buttonTrigger(2)">  </button>
-            <label id="labelinp2" for="taskinp2">
-                  Task I have to do number 2
-            </label>
-
-    </div>
-    <div class="taskcontainer">
-
-      <input type="checkbox" class="checkputs" id="taskinp3" onchange="checkboxTrigger(3)">
-
-                <button id="button3" onclick="buttonTrigger(3)">  </button>
-            <label id="labelinp3" for="taskinp3">
-                  Task I have to do number 3
-            </label>
+    <div id="popin">
+      <img src="img/giphy.gif" />
+      <h2>Well done!</h2>
+      <p>
+        You've just <b>completed a task!</b> Great work!
+        <br />
+        You efforts are paying off. Keep going!
+      </p>
+      <button onclick="hidePopin()">Super!</button>
     </div>
 
-</div>
-<hr/>
-<div id="popin">
-  <img src="img/giphy.gif" />
-  <h2>Well done!</h2>
-  <p>
-    You've just <b>completed a task!</b> Great work!
-    <br />
-    You efforts are paying off. Keep going!
-  </p>
-  <button onclick="hidePopin()">Super!</button>
-</div>
 
+    <div id="editablelist">
 
-<div id="editablelist">
-  <h2>What do you have to do?</h2>
-  <textarea id="editabletext" rows="12" cols="50">Respirer un grand coup
+      <button class="sub"><i class="fa fa-caret-down"></i>Show / Hide tasks backlog</button>
+      <textarea id="editabletext" rows="12">Respirer un grand coup
 Boire quelques gorgées d'eau
 Count ten breaths</textarea>
-<button onclick="getTaskListFromInput()">Submit!</button>
-</div>
-  <div id="theidea">
+    <br />
+    <button class="main" onclick="getTaskListFromInput()">Update!</button>
+    </div>
+<button class="main" id="editbtn" onclick="makeEditable()">make editable!</button>
+<div id="tests" onblur="blockingTab()">
+  <ul>
+  <li>
+  Respirer un grand coup
+  </li>
+    <li> Boire plein d'eau
+    <ul>
+      <li>
+        Boire quelques gorgées d'eau
+      </li>
 
-    <h2>THE TOP 3 TASK LIST
-    </h2>
-    <p>
-      <ul>
-
-        <li>This strategy really does help with remembering, planning and prioritizing. To use it most effectively, maintain separate task lists for work and home.
-        </li>
-        <li>At the top of each list, write the Top 3 tasks to be worked on first.
-        </li>
-        <li>Draw a line under those three.
-        </li>
-        <li>Work only on the Top 3 tasks. It's all right to jump around between them, but stay focused only on these priority tasks.
-        </li>
-        <li>When a Top 3 task is completed, replace it with another task from the list.
-        </li>
-        <li>Repeat the process.
+        <li>
+          Boire quelques gorgées d'eau
         </li>
 
-      </ul>
-    </p>
-
+    </ul>
+    </li>
+</ul>
+        </div>
   </div>
-
 </body>
 </html>

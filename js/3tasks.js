@@ -1,3 +1,7 @@
+// Chantiers en cours
+// plugger le nouvel input a la place de l'ancien :o
+
+
 
 var tasksarray = ['','','','','']
 var nextTask = 0;
@@ -106,10 +110,12 @@ function makeEditable() {
   if ( editable == false ) {
     document.getElementById("editbtn").innerHTML="I'm done editing!";
     document.getElementById(backlogDiv).setAttribute("contenteditable", "true");
+    document.getElementById(backlogDiv).setAttribute("class", "editable");
     editable = true;
   } else {
 document.getElementById(backlogDiv).setAttribute("contenteditable", "false");
   document.getElementById("editbtn").innerHTML="Edit Backlog";
+  document.getElementById(backlogDiv).setAttribute("class", "");
 editable = false;
   }
 

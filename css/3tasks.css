@@ -104,3 +104,7 @@ h2 {
 .fa-caret-down, .fa-caret-right {
   padding-right: 10px;
 }
+
+.editable {
+  border: 3px solid red;
+}

@@ -1,59 +1,133 @@
 body {
-  font-family: 'Roboto', Arial;
-  font-size: 1.3em;
+  font-family : 'Roboto',
+                Arial;
+  font-size   : 1.3em;
+}
+
+#all {
+  width   : 650px;
+  margin  : auto;
+  padding : 20px;
 }
 
 textarea {
-  font-size: 20px;
+  width:80%;
+  margin: auto;
+  display: block;
+  font-size : 20px;
 }
-#popin {
-  background-color: #fff;
-  width:40%;
-  height:auto;
-  position:fixed;
-  top:10%;
-  left:30%;
-  padding:20px;
-  border-radius: 15px;
-  border:1px grey solid;
-  display:none;
 
+#popin {
+  display          : none;
+  position         : fixed;
+  top              : 10%;
+  left             : 30%;
+  width            : 40%;
+  height           : auto;
+  padding          : 20px;
+  border           : 1px grey solid;
+  border-radius    : 15px;
+  background-color : #fff;
 }
+
 #popin img {
-  width:100%;
+  width : 100%;
 }
+
 #tasks {
-  font-weight: 200;
-  font-size: 1.7em;
+  padding       : 20px;
+  border-radius : 10px;
+  font-size     : 1.7em;
+  font-weight   : 200;
 }
 
 hr {
-  margin-top: 55px;
-  margin-bottom: 50px;
+  margin-top    : 55px;
+  margin-bottom : 50px;
 }
-.taskcontainer {
-  padding:15px 0;
-}
+
 h1 {
-  font-weight: 600;
+  font-style: italic;
+  font-weight : 400;
 }
 
 h2 {
-  font-weight: 400;
+  font-weight : 400;
 }
 
 .checkputs {
-display:none;}
+  display : none;
+}
 
-#tasks button{
-  width:35px;
-  height:35px;
-  color:green;
-  background-color: white;
-  border-radius: 5px;
+.taskcontainer {
+  margin-bottom : 20px;
+  padding       : 20px 20px;
+  border        : 1px rgb(220, 220, 220) solid;
+  border-radius : 5px;
+  box-shadow    : 0 2px 3px rgb(200, 200, 200);
+}
+
+.main, .sub {
+
+    padding       : 10px 20px;
+    margin-bottom: 10px;
+    font-size     : 1em;
+    border-radius    : 5px;
+
+}
+.main {
+  color            : black;
+  border        : 1px rgb(160, 160, 160) solid;
+  background-color : rgb(220, 220, 220);
+}
+.sub {
+  color            : black;
+  border:none;
+  text-decoration: underline;
+  background-color : white;
+}
+
+
+.taskbutton {
+  width            : 35px;
+  height           : 35px;
+  color            : green;
+  border-radius    : 5px;
+  background-color : white;
 }
 
 .done {
-  color:grey;
-  text-decoration: line-through;
+  color           : grey;
+  text-decoration : line-through;
+}
+
+.fa-caret-down, .fa-caret-right {
+ width:30px;
+}
+
+#tests {
+  font-style: italic;
+  color:rgb(180, 180, 180);
+}
+.editable ul li {
+  font-style: normal;
+  color:black;
+  border-top:1px rgb(150, 150, 150) solid;
+}
+.editable {
+ border: 1px solid rgb(200, 200, 200);
+  box-shadow    : inset 0 2px 3px rgb(200, 200, 200);
+}
+
+.visible {
+  visibility:visible;
+}
+.invisible {
+  visibility:hidden;
+}
+
+ul li {
+  width:100%;
+  line-height: 50px;
+  border-top:1px rgb(230, 230, 230) solid;
 }

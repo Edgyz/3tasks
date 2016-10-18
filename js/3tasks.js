@@ -2,9 +2,10 @@
 var tasksarray = ['','','','','']
 var nextTask = 0;
 
+//Should I turn the tasks into objects? What would the parameters be?
+var car = {type:"Fiat", model:"500", color:"white"};
 
-
-
+//Gets the text written in the Textarea input
 function getTaskListFromInput(){
 
   var lines = document.getElementById("editabletext").value.replace(/\r\n/g, "\n").split("\n");

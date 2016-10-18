@@ -19,32 +19,32 @@
     <div id="tasks">
       <div class="taskcontainer">
 
-          <input type="checkbox" class="checkputs" id="taskinp1" onchange="checkboxTrigger(1)">
-          <button class="taskbutton" id="button1" onclick="buttonTrigger(1)">
-          </button>
-          <label id="labelinp1" for="taskinp1">
-            Task I have to do number 1
-          </label>
+        <input type="checkbox" class="checkputs" id="taskinp1" onchange="checkboxTrigger(1)">
+        <button class="taskbutton" id="button1" onclick="buttonTrigger(1)">
+        </button>
+        <label id="labelinp1" for="taskinp1">
+          Task I have to do number 1
+        </label>
 
       </div>
       <div class="taskcontainer">
 
-          <input type="checkbox" class="checkputs" id="taskinp2" onchange="checkboxTrigger(2)">
-          <button class="taskbutton" id="button2" onclick="buttonTrigger(2)">
-          </button>
-          <label id="labelinp2" for="taskinp2">
-            Task I have to do number 2
-          </label>
+        <input type="checkbox" class="checkputs" id="taskinp2" onchange="checkboxTrigger(2)">
+        <button class="taskbutton" id="button2" onclick="buttonTrigger(2)">
+        </button>
+        <label id="labelinp2" for="taskinp2">
+          Task I have to do number 2
+        </label>
 
       </div>
       <div class="taskcontainer">
 
-          <input type="checkbox" class="checkputs" id="taskinp3" onchange="checkboxTrigger(3)">
-          <button class="taskbutton" id="button3" onclick="buttonTrigger(3)">
-          </button>
-          <label id="labelinp3" for="taskinp3">
-            Task I have to do number 3
-          </label>
+        <input type="checkbox" class="checkputs" id="taskinp3" onchange="checkboxTrigger(3)">
+        <button class="taskbutton" id="button3" onclick="buttonTrigger(3)">
+        </button>
+        <label id="labelinp3" for="taskinp3">
+          Task I have to do number 3
+        </label>
       </div>
     </div>
 
@@ -60,36 +60,44 @@
       <button onclick="hidePopin()">Super!</button>
     </div>
 
+          <button class="sub" onclick="hideShowBacklog()">
+            <i id="caretspot" class="fa fa-caret-down">
+            </i>
+            Show / Hide tasks backlog
+          </button>
 
-    <div id="editablelist">
+    <div id="backlog" class="invisible">
 
-      <button class="sub"><i class="fa fa-caret-down"></i>Show / Hide tasks backlog</button>
-      <textarea id="editabletext" rows="12">Respirer un grand coup
-Boire quelques gorgées d'eau
-Count ten breaths</textarea>
-    <br />
-    <button class="main" onclick="getTaskListFromInput()">Update!</button>
+
+      <button class="main" onclick="getTaskListFromInput()">
+        Update!
+      </button>
+
+      <button class="main" id="editbtn" onclick="makeEditable()">
+        make editable!
+      </button>
+
+      <div id="tests" onblur="blockingTab()" tabindex="-1">
+        <ul>
+          <li>
+            Respirer un grand coup
+          </li>
+
+          <li>
+            Feels great man
+
+          </li>
+          <li>
+
+          </li>
+          <li>
+
+          </li>
+          <li>
+
+          </li>
+        </ul>
+      </div>
     </div>
-<button class="main" id="editbtn" onclick="makeEditable()">make editable!</button>
-<div id="tests" onblur="blockingTab()">
-  <ul>
-  <li>
-  Respirer un grand coup
-  </li>
-    <li> Boire plein d'eau
-    <ul>
-      <li>
-        Boire quelques gorgées d'eau
-      </li>
-
-        <li>
-          Boire quelques gorgées d'eau
-        </li>
-
-    </ul>
-    </li>
-</ul>
-        </div>
-  </div>
-</body>
-</html>
+  </body>
+  </html>

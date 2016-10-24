@@ -1,9 +1,7 @@
-// Chantiers en cours
-// plugger le nouvel input a la place de l'ancien :o
 
 
 
-var tasksarray = ['','','','','']
+var tasksarray = [];
 var nextTask = 0;
 var editable = false;
 //is the backlog editable

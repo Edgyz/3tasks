@@ -1,44 +1,35 @@
-
-
-
-var tasksarray = [];
-var nextTask = 0;
 var editable = false;
 //is the backlog editable
+  var nextTask = 0;
+var taskbacklog = [];
+var activetasks = [];
 var backlogDiv = 'tests';
 //name of the backlog editable div for later functions
 
-//Should I turn the tasks into objects? What would the parameters be?
-var car = {type:"Fiat", model:"500", color:"white"};
+function refreshData(){
 
-//Gets the text written in the Textarea input
-function getTaskListFromInput(){
-  //
-  // var lines = document.getElementById("editabletext").value.replace(/\r\n/g, "\n").split("\n");
-  //
-  // for (var i = 1; i < 11; i++) {
-  //   var valuefrominputtext = lines[i-1];
-  //   console.log(valuefrominputtext);
-  //   if (valuefrominputtext == null ) {
-  //     valuefrominputtext = '(no task left!)';
-  //   }
-  //     tasksarray[i-1] = valuefrominputtext;
-  //
-  // }
-  //
-  // updateTaskText();
+  function updateDisplayedTasks(){
+  for (var i = 0; i < 3; i++) {
+    var j = i+1;
+    if (typeof activetasks[i] !== 'undefined') {
+      var x = activetasks[i].txt;
+      console.log(i);
+    } else { x = "No tasks left! woah!"; }
 
+    document.getElementById("labelinp"+j).innerHTML =
+    x;
+  }
+}
+getBacklogFromLocalStorage();
+if(document.getElementById('tasks') !== null){
+  updateDisplayedTasks();
+}
 }
 
+function updateTaskText(tasknumber) {
 
-function updateTaskText() {
-  nextTask = 0;
-  //load first 3 tasks from the list
-  for (var i = 1; i < 4; i++) {
-
-  textReplace(i,i-1);
-
-  }
+  document.getElementById("labelinp"+tasknumber).innerHTML =
+  activetasks[0].txt;
   hidePopin();
 }
 
@@ -55,9 +46,10 @@ function hidePopin() {
 
 //call to replace a task text, use label's id - 1 for the intro
 // and use "nextTask" to fetch the next
-function textReplace(labelid, arrayid){
+function textReplace(labelid){
+  console.log("replacing text" + labelid);
     document.getElementById("labelinp"+labelid).innerHTML =
-  tasksarray[arrayid];
+  activetasks[labelid+1].txt;
 
 
     nextTask +=1;
@@ -77,7 +69,7 @@ function checkboxTrigger(x){
     '<i class="fa-2x fa fa-check"></i>';
     document.getElementById("labelinp"+x).className = "done";
     showPopin();
-    textReplace(x,nextTask);
+    checkTask(x);
     document.getElementById("button"+x).innerHTML = "";
     document.getElementById("labelinp"+x).className = "";
     }
@@ -107,60 +99,170 @@ function buttonTrigger(x){
 function makeEditable() {
   //Making it editable
   if ( editable == false ) {
-    document.getElementById("editbtn").innerHTML="I'm done editing!";
+    fetchText(texts.editbtn_0,'editbtn_0');
     document.getElementById(backlogDiv).setAttribute("contenteditable", "true");
     document.getElementById(backlogDiv).setAttribute("class", "editable");
     editable = true;
   } else {
-    //Disabling edition AND updating task list
-document.getElementById(backlogDiv).setAttribute("contenteditable", "false");
-  document.getElementById("editbtn").innerHTML="Edit Backlog";
+    //Disabling edition
+    document.getElementById(backlogDiv).setAttribute("contenteditable", "false");
+  fetchText(texts.editbtn_1,'editbtn_0');
   document.getElementById(backlogDiv).setAttribute("class", "");
-editable = false;
+  editable = false;
+  saveCurrentBacklog();
+  refreshData();
 
-var pouet = document.getElementById(backlogDiv).innerHTML;
-
-pouet = pouet.replace(/ <li>|<li> |<li>/g,'|');
-pouet = pouet.replace(/[/]/g,'');
-pouet = pouet.replace(/ <ul>|<ul> |<ul>/g,'');
-pouet = pouet.replace(/ <li>|<li> |<li>/g,'');
-pouet = pouet.replace(/\r?\n|\r/g,'');
-pouet = pouet.replace(/^|\s$/g,'|');
-pouet = pouet.replace(/ +(?= )/g,'');
-console.log(pouet);
-var splitpouet = pouet.split('|');
-console.log(splitpouet);
-
-for (var i = 0; i < splitpouet.length; i++) {
-  console.log("run " + i + splitpouet[i]);
-  //is it empty???
-  if ((splitpouet[i] === "")||(splitpouet[i] === " ")) {
-console.log("whitespace"+i);
-// if it's the first one then we Shift & set i back to 0
-    if( i == 0 ){
-      splitpouet.shift();
-      i=-1;
-    }
-
-  // if it's the last one then we pop
-    else if (i==splitpouet.length-1) {
-        splitpouet.pop();
-        console.log("poping");
-    } // in every other case we splice
-    else {
-      splitpouet.splice(i,1);
-      console.log("splicing");
-      i--;
-    }
   }
 
 }
-console.log(splitpouet);
-tasksarray = splitpouet;
-updateTaskText()
+
+
+function saveCurrentBacklog() {
+  InputArrayToBacklog(cleanBacklogHTML());
+  saveBacklogToLocalStorage();
+
+}
+
+
+function cleanBacklogHTML() {
+
+  var htmlinput = document.getElementById(backlogDiv).innerHTML;
+  //remove HTML tags and save each line as...an obj?
+
+  //removing ul, li tags, id and class elements
+  htmlinput = htmlinput.replace(/<ul>|<\/ul>|<\/li>/g,'');
+  htmlinput = htmlinput.replace(/ id="sampletask_.+" class="fetchtxt"/g,'');
+
+  //adding '|' to separate each line
+  htmlinput = htmlinput.replace(/<li>/g,'|');
+
+  //removing white spaces
+  htmlinput = htmlinput.replace(/\r?\n|\r/g,'');
+  htmlinput = htmlinput.replace(/ +(?= )/g,'');
+
+  //splitting with '|'
+  var newtaskarray = htmlinput.split('|');
+  console.log(newtaskarray);
+
+  //Removing empty lines or white spaces from array
+  for (var i = 0; i < newtaskarray.length; i++) {
+
+
+        //if the line is empty....
+        if ((newtaskarray[i] === "")||(newtaskarray[i] === " "))
+        {
+
+          console.log("whitespace"+i);
+
+          // and it's the first one: shift & set i back to 0
+              if( i == 0 )
+              {
+                newtaskarray.shift();
+                i=-1;
+              }
+
+            // if it's the last one then we pop
+              else if (i==newtaskarray.length-1)
+              {
+                  newtaskarray.pop();
+                  console.log("poping");
+              }
+              // in every other case we splice
+              else
+              {
+                newtaskarray.splice(i,1);
+                console.log("splicing");
+                i--;
+              }
+        } else {
+          newtaskarray[i] = newtaskarray[i].trim();
+        }
+
+    } //end of for loop
+
+  return newtaskarray;
+}
+
+
+function InputArrayToBacklog(inputarray) {
+  for (var i = 0; i < inputarray.length; i++) {
+    var task =
+    {
+      tid : i,
+      txt : inputarray[i],
+      done : false,
+    };
+
+    taskbacklog[i] = task;
   }
 
 }
+
+function saveBacklogToLocalStorage(){
+  localStorage["numberoftasks"] =  taskbacklog.length;
+  for (var i = 0; i < taskbacklog.length; i++) {
+
+      localStorage["backlogtask." + i + ".tid"] = taskbacklog[i].tid;
+      localStorage["backlogtask." + i + ".txt"] = taskbacklog[i].txt;
+      localStorage["backlogtask." + i + ".done"] = taskbacklog[i].done;
+    }
+  }
+
+function getBacklogFromLocalStorage(){
+    if (typeof localStorage["numberoftasks"] !== 'undefined'){
+
+      for (var i = 0; i < localStorage["numberoftasks"]; i++)
+      {
+        taskbacklog[i] =
+          {
+          tid: localStorage["backlogtask." + i + ".tid"],
+          txt: localStorage["backlogtask." + i + ".txt"],
+          done: localStorage["backlogtask." + i + ".done"]
+          }
+      }
+
+        console.log(taskbacklog);
+        makeActiveTaskList();
+      } else { console.log("no stored data found");}
+
+      fillBacklogHTMLwithData();
+    }
+
+    function makeActiveTaskList(){
+      var j = 0;
+      for (var i = 0; i < taskbacklog.length; i++)
+      {
+        if(taskbacklog[i].done == "false"){
+          activetasks[j] =
+            {
+            tid: localStorage["backlogtask." + i + ".tid"],
+            txt: localStorage["backlogtask." + i + ".txt"],
+            done: localStorage["backlogtask." + i + ".done"]
+            }
+          j++;
+        }
+      }
+console.log(activetasks);
+    }
+
+function fillBacklogHTMLwithData(){
+  var HTMLcontent='';
+
+  for (var i = 0; i < taskbacklog.length; i++)
+  {
+    if (taskbacklog[i].done == 'true') {
+
+      HTMLcontent = HTMLcontent + '<li class="done">' + taskbacklog[i].txt +"</li>";
+
+    } else
+    HTMLcontent = HTMLcontent + "<li>" + taskbacklog[i].txt +"</li>";
+
+  }
+  document.getElementById(backlogDiv).innerHTML=
+  "<ul>"+ HTMLcontent + "</ul>" ;
+}
+
+
 
 function blockingTab() {
   if ( editable == true ) {
@@ -174,7 +276,31 @@ function hideShowBacklog() {
     x.setAttribute("class","invisible");
     document.getElementById("caretspot").setAttribute("class","fa fa-caret-right");
   } else {
-x.setAttribute("class","visible");
-document.getElementById("caretspot").setAttribute("class","fa fa-caret-down");
+  x.setAttribute("class","visible");
+  document.getElementById("caretspot").setAttribute("class","fa fa-caret-down");
+  }
+}
+
+
+function toMainPage(){
+  saveCurrentBacklog();
+  window.location.href = window.location.href.replace("/index.html","/main.html");
+
+}
+
+function checkTask(checkboxNumber){
+  //checkboxNumber: 1, 2 or 3
+  //first look in the activetasks array and find the task id
+  //that matches the text for this checkbox
+  var tasktext = document.getElementById('labelinp'+checkboxNumber).innerHTML;
+  for (var i = 0; i < activetasks.length; i++) {
+    if (tasktext == activetasks[i].txt) {
+      console.log("that's the one "+i);
+      //if it's a match the task is marked "done" in the backlog var
+      taskbacklog[i].done = true;
+      activetasks.splice(i,1);
+      saveBacklogToLocalStorage();
+      refreshData();
+    } else { console.log("couldn't find");}
   }
 }

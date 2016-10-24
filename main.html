@@ -7,14 +7,16 @@
   <script src="https://use.fontawesome.com/349cc34bf4.js"></script>
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
   <script src="js/3tasks.js"></script>
+
+  <script src="js/texts.js"></script>
   <link rel="stylesheet" type="text/css" href="css/3tasks.css">
 
 </head>
-<body onload="getTaskListFromInput()">
+<body onload="fetchWholePageTexts('fetchtxt');refreshData()">
 
   <div id="all">
 
-    <h1 id="title">it's only 3 tasks!</h1>
+    <h1 id="title_0" class="fetchtxt"></h1>
 
     <div id="tasks">
       <div class="taskcontainer">
@@ -66,38 +68,20 @@
             Show / Hide tasks backlog
           </button>
 
-    <div id="backlog" class="invisible">
 
 
-      <button class="main" onclick="getTaskListFromInput()">
-        Update!
-      </button>
+          <div id="backlog" class="invisible">
 
-      <button class="main" id="editbtn" onclick="makeEditable()">
-        make editable!
-      </button>
 
-      <div id="tests" onblur="blockingTab()" tabindex="-1">
-        <ul>
-          <li>
-            Respirer un grand coup
-          </li>
+            <button class="main fetchtxt" id="editbtn_0" onclick="makeEditable()">
 
-          <li>
-            Feels great man
+            </button>
 
-          </li>
-          <li>
+            <div id="tests" onblur="blockingTab()" tabindex="-1">
 
-          </li>
-          <li>
+            </div>
+          </div>
 
-          </li>
-          <li>
 
-          </li>
-        </ul>
-      </div>
-    </div>
   </body>
   </html>

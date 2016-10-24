@@ -7,87 +7,31 @@
   <script src="https://use.fontawesome.com/349cc34bf4.js"></script>
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
   <script src="js/3tasks.js"></script>
+  <script src="js/texts.js"></script>
   <link rel="stylesheet" type="text/css" href="css/3tasks.css">
 
 </head>
-<body onload="getTaskListFromInput()">
+<body onload="fetchWholePageTexts('fetchtxt')">
 
   <div id="all">
 
-    <h1 id="title">it's only 3 tasks!</h1>
-
-    <div id="tasks">
-      <div class="taskcontainer">
-
-        <input type="checkbox" class="checkputs" id="taskinp1" onchange="checkboxTrigger(1)">
-        <button class="taskbutton" id="button1" onclick="buttonTrigger(1)">
-        </button>
-        <label id="labelinp1" for="taskinp1">
-          Task I have to do number 1
-        </label>
-
-      </div>
-      <div class="taskcontainer">
-
-        <input type="checkbox" class="checkputs" id="taskinp2" onchange="checkboxTrigger(2)">
-        <button class="taskbutton" id="button2" onclick="buttonTrigger(2)">
-        </button>
-        <label id="labelinp2" for="taskinp2">
-          Task I have to do number 2
-        </label>
-
-      </div>
-      <div class="taskcontainer">
-
-        <input type="checkbox" class="checkputs" id="taskinp3" onchange="checkboxTrigger(3)">
-        <button class="taskbutton" id="button3" onclick="buttonTrigger(3)">
-        </button>
-        <label id="labelinp3" for="taskinp3">
-          Task I have to do number 3
-        </label>
-      </div>
-    </div>
+    <h1 id="title_0" class="fetchtxt"></h1>
 
 
-    <div id="popin">
-      <img src="img/giphy.gif" />
-      <h2>Well done!</h2>
-      <p>
-        You've just <b>completed a task!</b> Great work!
-        <br />
-        You efforts are paying off. Keep going!
-      </p>
-      <button onclick="hidePopin()">Super!</button>
-    </div>
+    <div id="backlog">
 
-          <button class="sub" onclick="hideShowBacklog()">
-            <i id="caretspot" class="fa fa-caret-down">
-            </i>
-            Show / Hide tasks backlog
-          </button>
-
-    <div id="backlog" class="invisible">
-
-
-      <button class="main" onclick="getTaskListFromInput()">
-        Update!
-      </button>
-
-      <button class="main" id="editbtn" onclick="makeEditable()">
-        make editable!
-      </button>
 
       <div id="tests" onblur="blockingTab()" tabindex="-1">
         <ul>
-          <li>
+          <li id="sampletask_0" class="fetchtxt">
             Respirer un grand coup
           </li>
 
-          <li>
+          <li id="sampletask_1" class="fetchtxt">
             Feels great man
 
           </li>
-          <li>
+          <li id="sampletask_2" class="fetchtxt">
 
           </li>
           <li>
@@ -98,6 +42,13 @@
           </li>
         </ul>
       </div>
+
     </div>
+
+
+          <button class="main fetchtxt" id="editbtn_0" onclick="makeEditable()">
+          </button>
+          <button class="main fetchtxt" id="nextbtn_0" onclick="toMainPage()">
+          </button>
   </body>
   </html>

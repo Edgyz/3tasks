@@ -4,6 +4,7 @@ var editable = false;
 var taskbacklog = [];
 var activetasks = [];
 var backlogDiv = 'tests';
+var reviewischecked = false;
 //name of the backlog editable div for later functions
 
 function refreshData(){
@@ -285,8 +286,13 @@ function hideShowBacklog() {
 function toMainPage(){
   makeEditable(true);
   saveCurrentBacklog();
-
+  if (reviewischecked) {
+  window.location.href = window.location.href.replace("/index.html","/review.html");
+  }
+  else
+  {
   window.location.href = window.location.href.replace("/index.html","/main.html");
+  }
 
 }
 
@@ -305,4 +311,22 @@ function checkTask(checkboxNumber){
       refreshData();
     } else { console.log("couldn't find");}
   }
+}
+
+
+function onClickSmthg(elmtID){
+  var HTMLcontent = document.getElementById(elmtID).innerHTML;
+  if(HTMLcontent == "")
+  {
+    document.getElementById(elmtID).innerHTML =
+  '<i class="fa-2x fa fa-check"></i>';
+  reviewischecked = true;
+
+} else {
+  document.getElementById(elmtID).innerHTML =
+'';
+reviewischecked = false;
+
+
+}
 }

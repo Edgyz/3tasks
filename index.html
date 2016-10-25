@@ -11,17 +11,19 @@
   <link rel="stylesheet" type="text/css" href="css/3tasks.css">
 
 </head>
-<body onload="fetchWholePageTexts('fetchtxt')">
+<body onload="fetchWholePageTexts('fetchtxt');makeEditable(false)">
 
   <div id="all">
 
     <h1 id="title_0" class="fetchtxt"></h1>
 
+    <h2 id="intro_0" class="fetchtxt"></h2>
+
 
     <div id="backlog">
 
 
-      <div id="tests" onblur="blockingTab()" tabindex="-1">
+      <div id="tests" onblur="blockingTab()" tabindex="-1" contenteditable="true">
         <ul>
           <li id="sampletask_0" class="fetchtxt">
             Respirer un grand coup
@@ -37,17 +39,14 @@
           <li>
 
           </li>
-          <li>
 
-          </li>
         </ul>
       </div>
 
     </div>
 
 
-          <button class="main fetchtxt" id="editbtn_0" onclick="makeEditable()">
-          </button>
+
           <button class="main fetchtxt" id="nextbtn_0" onclick="toMainPage()">
           </button>
   </body>

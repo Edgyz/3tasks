@@ -2,12 +2,13 @@
 var texts =
   {
   title_0: "it's only 3 tasks!",
+  intro_0: "Write down eeeeverything that you have to do. It's ok. Everything you can think of.",
   editbtn_0: "Edit backlog",
   editbtn_1: "I'm done editing!",
-  nextbtn_0: "Next!",
-  sampletask_0: "Respirer un grand coup",
-  sampletask_1: "Compter jusqu'à dix",
-  sampletask_2: "Feels good man..."
+  nextbtn_0: "OK, I'm done!",
+  sampletask_0: "Noter tout ce que j'ai à faire",
+  sampletask_1: "Appuyer sur entrée après chaque tâche",
+  sampletask_2: "Prends ton temps, la liste est infinie..."
 
   };
 

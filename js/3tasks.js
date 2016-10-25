@@ -96,17 +96,17 @@ function buttonTrigger(x){
   }
 
 
-function makeEditable() {
+function makeEditable(editable_bool) {
   //Making it editable
-  if ( editable == false ) {
-    fetchText(texts.editbtn_0,'editbtn_0');
+  if ( editable_bool == false ) {
+    fetchText(texts.editbtn_1,'editbtn_0');
     document.getElementById(backlogDiv).setAttribute("contenteditable", "true");
     document.getElementById(backlogDiv).setAttribute("class", "editable");
     editable = true;
   } else {
     //Disabling edition
     document.getElementById(backlogDiv).setAttribute("contenteditable", "false");
-  fetchText(texts.editbtn_1,'editbtn_0');
+  fetchText(texts.editbtn_0,'editbtn_0');
   document.getElementById(backlogDiv).setAttribute("class", "");
   editable = false;
   saveCurrentBacklog();
@@ -283,7 +283,9 @@ function hideShowBacklog() {
 
 
 function toMainPage(){
+  makeEditable(true);
   saveCurrentBacklog();
+
   window.location.href = window.location.href.replace("/index.html","/main.html");
 
 }

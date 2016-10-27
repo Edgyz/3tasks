@@ -132,8 +132,11 @@ function cleanBacklogHTML() {
 
   //removing ul, li tags, id and class elements
   htmlinput = htmlinput.replace(/<ul>|<\/ul>|<\/li>/g,'');
-  htmlinput = htmlinput.replace(/ id="sampletask_.+" class="fetchtxt"/g,'');
+  htmlinput = htmlinput.replace(/ id="sampletask_\d" /g,'');
+  console.log("2,5"+ htmlinput);
+  htmlinput = htmlinput.replace(/class="fetchtxt"/g,'');
 
+    console.log("3"+htmlinput);
   //adding '|' to separate each line
   htmlinput = htmlinput.replace(/<li>/g,'|');
 

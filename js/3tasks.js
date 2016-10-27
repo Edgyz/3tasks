@@ -229,7 +229,7 @@ function getBacklogFromLocalStorage(){
         makeActiveTaskList();
       } else { console.log("no stored data found");}
 
-      fillBacklogHTMLwithData();
+
     }
 
     function makeActiveTaskList(){
@@ -317,7 +317,7 @@ function checkTask(checkboxNumber){
 }
 
 
-function onClickSmthg(elmtID){
+function checkboxChecking(elmtID){
   var HTMLcontent = document.getElementById(elmtID).innerHTML;
   if(HTMLcontent == "")
   {
@@ -332,4 +332,23 @@ reviewischecked = false;
 
 
 }
+}
+
+function onPageLoad(pagename) {
+  //pagename can be index or main or review
+
+  //stuff for all pages
+  fetchWholePageTexts('fetchtxt');
+
+  //specific code
+  if (pagename == "index") {
+makeEditable(false);
+checkboxChecking('checkboxBtn');
+} else if (pagename == "main") {
+  refreshData();
+  fillBacklogHTMLwithData();
+} else if (pagename == "review") {
+    getBacklogFromLocalStorage();
+    showPopin();
+  }
 }

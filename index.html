@@ -11,13 +11,13 @@
   <link rel="stylesheet" type="text/css" href="css/3tasks.css">
 
 </head>
-<body onload="fetchWholePageTexts('fetchtxt');makeEditable(false)">
+<body onload="onPageLoad('index')">
 
   <div id="all">
 
     <h1 id="title_0" class="fetchtxt"></h1>
 
-    <h2 id="intro_0" class="fetchtxt"></h2>
+    <p id="intro_0" class="fetchtxt"></p>
 
 
     <div id="backlog">
@@ -48,7 +48,7 @@
 
 
 
-            <button class="taskbutton" id="button1" onclick="onClickSmthg('button1')"></button>
+            <button class="taskbutton" id="checkboxBtn" onclick="checkboxChecking('checkboxBtn')"></button>
             </button>
             <label class="fetchtxt" id="processchckbox_0">
             </label>
